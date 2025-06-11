@@ -41,7 +41,7 @@ const formSchema = z
     {
       message: "worstLikelyDemand < expectedDemand < bestLikelyDemand",
       path: ["expectedDemand"],
-    }
+    },
   );
 
 export default function ProductionForm() {
@@ -84,7 +84,7 @@ export default function ProductionForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-6 max-w-xl mx-auto"
+          className="mx-auto max-w-xl space-y-6"
         >
           {fields.map((field) => (
             <FormField

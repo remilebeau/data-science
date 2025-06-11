@@ -5,7 +5,7 @@ type Props = {
 export default function ProductionResults({ simulationResults }: Props) {
   return (
     <section className="mt-8">
-      <h2 className="text-2xl font-bold mb-4">Simulation Results</h2>
+      <h2 className="mb-4 text-2xl font-bold">Simulation Results</h2>
       <p>
         Expected Profit:{" "}
         {simulationResults.expectedProfit.toLocaleString("en-US", {
