@@ -1,10 +1,10 @@
-import MonteCarloExplanation from "@/components/MonteCarloExplanation";
+import ProductionExplanation from "@/components/ProductionExplanation";
 import ProductionForm from "@/components/ProductionForm";
 
 export default function Home() {
   return (
     <main>
-      <MonteCarloExplanation />
+      <ProductionExplanation />
       <ProductionForm />
     </main>
   );
