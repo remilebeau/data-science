@@ -4,7 +4,7 @@ const DATA_URL =
     : "https://production-calculator.vercel.app";
 
 export default async function simulateProduction(
-  formData: SimulationFormValues
+  formData: SimulationFormValues,
 ): Promise<SimulationResults> {
   const res = await fetch(DATA_URL, {
     method: "POST",

@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import simulateProduction from "@/lib/simulateProduction";
 import { useState } from "react";
 import ProductionResults from "@/components/ProductionResults";
+import { LoaderCircle } from "lucide-react";
 
 const formSchema = z
   .object({
@@ -61,10 +62,19 @@ export default function ProductionForm() {
   });
   const [simulationResults, setSimulationResults] =
     useState<SimulationResults | null>();
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    setIsLoading(true);
     const results = await simulateProduction(data);
+    if (!results) {
+      setError("Something went wrong, please try again");
+      setIsLoading(false);
+      return;
+    }
     setSimulationResults(results);
+    setIsLoading(false);
   };
 
   const fields = [
@@ -110,6 +120,10 @@ export default function ProductionForm() {
           </Button>
         </form>
       </Form>
+      {error && (
+        <p className="text-destructive mx-auto mt-8 text-center">{error}</p>
+      )}
+      {isLoading && <LoaderCircle className="mx-auto mt-8 animate-spin" />}
       {simulationResults && (
         <ProductionResults simulationResults={simulationResults} />
       )}
