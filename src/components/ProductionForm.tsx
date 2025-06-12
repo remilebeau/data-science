@@ -94,7 +94,7 @@ export default function ProductionForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="mx-auto max-w-3xl space-y-6"
+          className="mx-auto flex w-1/2 flex-col gap-4"
         >
           {fields.map((field) => (
             <FormField
@@ -115,7 +115,7 @@ export default function ProductionForm() {
             />
           ))}
 
-          <Button type="submit" className="w-full">
+          <Button variant="secondary" type="submit" className="mt-8 w-full">
             Submit
           </Button>
         </form>
