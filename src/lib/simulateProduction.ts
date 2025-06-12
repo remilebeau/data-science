@@ -1,7 +1,7 @@
 const DATA_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:8000/api/simulations/production"
-    : "https://production-calculator.vercel.app";
+    : "https://simulation-api-rsaw.onrender.com/api/simulations/production";
 
 export default async function simulateProduction(
   formData: SimulationFormValues,
