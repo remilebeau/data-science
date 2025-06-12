@@ -1,4 +1,3 @@
-// app/components/ProductionForm.tsx
 "use client";
 
 import { z } from "zod";
@@ -12,7 +11,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form"; // Adjust import path if needed
+} from "@/components/ui/form";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -39,7 +38,8 @@ const formSchema = z
       data.worstLikelyDemand < data.expectedDemand &&
       data.expectedDemand < data.bestLikelyDemand,
     {
-      message: "worstLikelyDemand < expectedDemand < bestLikelyDemand",
+      message:
+        "verify that worstLikelyDemand < expectedDemand < bestLikelyDemand",
       path: ["expectedDemand"],
     },
   );
@@ -84,7 +84,7 @@ export default function ProductionForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="mx-auto max-w-xl space-y-6"
+          className="mx-auto max-w-3xl space-y-6"
         >
           {fields.map((field) => (
             <FormField

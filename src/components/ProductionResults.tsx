@@ -4,7 +4,7 @@ type Props = {
 
 export default function ProductionResults({ simulationResults }: Props) {
   return (
-    <section className="mt-8">
+    <section className="mx-auto mt-8 max-w-3xl">
       <h2 className="mb-4 text-2xl font-bold">Simulation Results</h2>
       <p>
         Expected Profit:{" "}
