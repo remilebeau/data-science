@@ -15,78 +15,61 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import simulateProduction from "@/lib/simulateProduction";
-import { useState } from "react";
-import SimulationResults from "@/components/SimulationResults";
 import { LoaderCircle } from "lucide-react";
+import { useState } from "react";
+import optimizeStaff from "@/lib/optimizeStaff";
+import OptimizationResults from "@/components/OptimizationResults";
 
-const formSchema = z
-  .object({
-    productionQuantity: z.coerce.number(),
-    unitCost: z.coerce.number(),
-    unitPrice: z.coerce.number(),
-    salvagePrice: z.coerce.number(),
-    fixedCost: z.coerce.number(),
-    worstLikelyDemand: z.coerce.number(),
-    expectedDemand: z.coerce.number(),
-    bestLikelyDemand: z.coerce.number(),
-    demandStandardDeviation: z.coerce.number().gt(0, {
-      message: "Demand standard deviation must be greater than 0",
-    }),
-  })
-  .refine(
-    (data) =>
-      data.worstLikelyDemand < data.expectedDemand &&
-      data.expectedDemand < data.bestLikelyDemand,
-    {
-      message:
-        "verify that worstLikelyDemand < expectedDemand < bestLikelyDemand",
-      path: ["expectedDemand"],
-    },
-  );
+const formSchema = z.object({
+  monReq: z.coerce.number().min(0),
+  tueReq: z.coerce.number().min(0),
+  wedReq: z.coerce.number().min(0),
+  thuReq: z.coerce.number().min(0),
+  friReq: z.coerce.number().min(0),
+  satReq: z.coerce.number().min(0),
+  sunReq: z.coerce.number().min(0),
+});
 
-export default function SimulationForm() {
+export default function OptimizationForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      productionQuantity: 0,
-      unitCost: 0,
-      unitPrice: 0,
-      salvagePrice: 0,
-      fixedCost: 0,
-      worstLikelyDemand: 0,
-      expectedDemand: 0,
-      bestLikelyDemand: 0,
-      demandStandardDeviation: 1,
+      monReq: 0,
+      tueReq: 0,
+      wedReq: 0,
+      thuReq: 0,
+      friReq: 0,
+      satReq: 0,
+      sunReq: 0,
     },
   });
-  const [simulationOutput, setSimulationOutput] =
-    useState<SimulationOutput | null>();
-  const [isLoading, setIsLoading] = useState(false);
+
+  const [results, setResults] = useState<OptimizationOutput | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
+    setError(null);
     setIsLoading(true);
-    const results = await simulateProduction(data);
+    setResults(null);
+    const results = await optimizeStaff(data);
     if (!results) {
       setError("Something went wrong, please try again");
       setIsLoading(false);
       return;
     }
-    setSimulationOutput(results);
+    setResults(results);
     setIsLoading(false);
   };
 
   const fields = [
-    "productionQuantity",
-    "unitCost",
-    "unitPrice",
-    "salvagePrice",
-    "fixedCost",
-    "worstLikelyDemand",
-    "expectedDemand",
-    "bestLikelyDemand",
-    "demandStandardDeviation",
+    "monReq",
+    "tueReq",
+    "wedReq",
+    "thuReq",
+    "friReq",
+    "satReq",
+    "sunReq",
   ] as const;
 
   return (
@@ -104,10 +87,10 @@ export default function SimulationForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="capitalize">
-                    {field.name.replace(/([A-Z])/g, " $1")}
+                    {field.name.replace("Req", "").slice(0, 3)} Requirement
                   </FormLabel>
                   <FormControl>
-                    <Input type="number" step="any" {...field} />
+                    <Input type="number" step="1" min="0" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -120,13 +103,12 @@ export default function SimulationForm() {
           </Button>
         </form>
       </Form>
+
       {error && (
         <p className="text-destructive mx-auto mt-8 text-center">{error}</p>
       )}
       {isLoading && <LoaderCircle className="mx-auto mt-8 animate-spin" />}
-      {simulationOutput && (
-        <SimulationResults simulationOutput={simulationOutput} />
-      )}
+      {results && <OptimizationResults results={results} />}
     </>
   );
 }

@@ -1,11 +1,11 @@
 const DATA_URL =
   process.env.NODE_ENV === "development"
-    ? "http://localhost:8000/api/simulations/production"
-    : "https://simulation-api-rsaw.onrender.com/api/simulations/production";
+    ? "http://localhost:8000/api/optimizations/staffing"
+    : "https://simulation-api-rsaw.onrender.com/api/optimizations/staffing";
 
-export default async function simulateProduction(
-  formData: SimulationInput,
-): Promise<SimulationOutput> {
+export default async function optimizeStaff(
+  formData: OptimizationInput,
+): Promise<OptimizationOutput> {
   const res = await fetch(DATA_URL, {
     method: "POST",
     headers: {
