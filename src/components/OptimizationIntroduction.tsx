@@ -4,23 +4,19 @@ export default function OptimizationIntroduction() {
       <h2 className="text-2xl font-semibold">
         How to Use the Staffing Optimizer
       </h2>
-
       <div className="space-y-4">
         <p>
-          This tool helps you figure out the fewest number of employees needed
-          to cover all required shifts for the week. It assigns workers to fixed
-          5-day rotations and ensures your daily staffing needs are met.
+          This tool calculates the fewest employees needed to meet weekly
+          staffing needs using fixed 5-day rotations.
         </p>
         <p>
-          Just enter how many workers you need for each day of the week, and the
-          optimizer will calculate the minimum number of employees required.
+          Enter daily staffing requirements, and the optimizer returns the
+          minimum number of workers required.
         </p>
       </div>
 
       <h2 className="text-2xl font-semibold">What You Need to Enter</h2>
-
-      <p>For each day of the week, enter the number of workers you need:</p>
-
+      <p>Input the required number of workers for each day:</p>
       <ul className="text-muted-foreground ml-5 list-inside list-disc space-y-1">
         <li>
           <strong>Monday</strong> (<code>monReq</code>)
@@ -44,80 +40,65 @@ export default function OptimizationIntroduction() {
           <strong>Sunday</strong> (<code>sunReq</code>)
         </li>
       </ul>
-
       <p>
-        The form sends these values to the API, which returns the optimal
-        staffing plan.
+        These values are sent to the API, which returns the optimal staffing
+        plan.
       </p>
 
-      <h2 className="text-2xl font-semibold">
-        Understanding the Shift Variables (x1 to x7)
-      </h2>
-
-      <p>
-        The optimizer assigns workers to fixed 5-day shifts that rotate through
-        the week. Each shift is represented by a variable <code>x1</code>{" "}
-        through <code>x7</code>:
-      </p>
-
+      <h2 className="text-2xl font-semibold">Shift Variables (x1 to x7)</h2>
+      <p>Each variable represents a 5-day shift rotation:</p>
       <ul className="text-muted-foreground ml-5 list-inside list-disc space-y-1">
         <li>
-          <code>x1</code>: Works Monday through Friday
+          <code>x1</code>: Mon&ndash;Fri
         </li>
         <li>
-          <code>x2</code>: Works Tuesday through Saturday
+          <code>x2</code>: Tue&ndash;Sat
         </li>
         <li>
-          <code>x3</code>: Works Wednesday through Sunday
+          <code>x3</code>: Wed&ndash;Sun
         </li>
         <li>
-          <code>x4</code>: Works Thursday through Monday
+          <code>x4</code>: Thu&ndash;Mon
         </li>
         <li>
-          <code>x5</code>: Works Friday through Tuesday
+          <code>x5</code>: Fri&ndash;Tue
         </li>
         <li>
-          <code>x6</code>: Works Saturday through Wednesday
+          <code>x6</code>: Sat&ndash;Wed
         </li>
         <li>
-          <code>x7</code>: Works Sunday through Thursday
+          <code>x7</code>: Sun&ndash;Thu
         </li>
       </ul>
-
       <p>
-        The API will tell you how many workers should be assigned to each of
-        these rotations to meet your demand with the fewest total people.
+        The API tells you how many workers to assign to each shift to meet
+        demand with the fewest total employees.
       </p>
 
-      <h2 className="text-2xl font-semibold">What You'll Get Back</h2>
-
-      <p>The response will include:</p>
-
+      <h2 className="text-2xl font-semibold">What You’ll Get Back</h2>
+      <p>The API response includes:</p>
       <ul className="text-muted-foreground ml-5 list-inside list-disc space-y-1">
         <li>
-          <code>minStaff</code>: The smallest number of total workers needed
+          <code>minStaff</code>: Minimum total workers
         </li>
         <li>
-          <code>x1</code> to <code>x7</code>: How many workers to assign to each
-          5-day shift
+          <code>x1</code>&ndash;<code>x7</code>: Workers per shift
         </li>
         <li>
-          <code>monAva</code> to <code>sunAva</code>: How many workers are
-          available each day
+          <code>monAva</code>&ndash;<code>sunAva</code>: Daily worker
+          availability
         </li>
         <li>
-          <code>monSlack</code> to <code>sunSlack</code>: Extra workers per day
-          (if any)
+          <code>monSlack</code>&ndash;<code>sunSlack</code>: Daily excess
+          workers
         </li>
         <li>
-          <code>totalSlack</code>: Total number of unused workers across the
-          week
+          <code>totalSlack</code>: Total weekly excess
         </li>
       </ul>
-
       <p className="italic">
-        If your input makes it impossible to meet the demand, the API will
-        return an error letting you know that no feasible solution was found.
+        If a solution can&apos;t meet your input demands, the API returns an
+        error.
       </p>
     </section>
   );
