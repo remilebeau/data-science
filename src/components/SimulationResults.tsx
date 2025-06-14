@@ -2,7 +2,7 @@ type Props = {
   simulationResults: SimulationResults;
 };
 
-export default function ProductionResults({ simulationResults }: Props) {
+export default function SimulationResults({ simulationResults }: Props) {
   return (
     <section className="mx-auto my-8 max-w-3xl">
       <h2 className="mb-4 text-2xl font-bold">Simulation Results</h2>

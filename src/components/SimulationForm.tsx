@@ -17,7 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import simulateProduction from "@/lib/simulateProduction";
 import { useState } from "react";
-import ProductionResults from "@/components/ProductionResults";
+import SimulationResults from "@/components/SimulationResults";
 import { LoaderCircle } from "lucide-react";
 
 const formSchema = z
@@ -45,7 +45,7 @@ const formSchema = z
     },
   );
 
-export default function ProductionForm() {
+export default function SimulationForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -125,7 +125,7 @@ export default function ProductionForm() {
       )}
       {isLoading && <LoaderCircle className="mx-auto mt-8 animate-spin" />}
       {simulationResults && (
-        <ProductionResults simulationResults={simulationResults} />
+        <SimulationResults simulationResults={simulationResults} />
       )}
     </>
   );

@@ -1,4 +1,4 @@
-export default function ProductionExplanation() {
+export default function SimulationIntroduction() {
   return (
     <section className="mx-auto max-w-3xl space-y-8 px-4 py-6">
       <h2 className="text-primary-foreground text-2xl font-semibold">
