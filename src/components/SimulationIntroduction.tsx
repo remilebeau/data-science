@@ -1,6 +1,7 @@
 export default function SimulationIntroduction() {
   return (
     <section className="mx-auto max-w-3xl space-y-8 px-4 py-6">
+      {/* What is this simulation about? */}
       <h2 className="text-2xl font-semibold">What is this simulation about?</h2>
 
       <div className="space-y-4">
@@ -22,6 +23,7 @@ export default function SimulationIntroduction() {
         </p>
       </div>
 
+      {/* How does it work? */}
       <h2 className="text-2xl font-semibold">How does it work?</h2>
 
       <ol className="list-inside list-decimal space-y-4">
@@ -63,6 +65,7 @@ export default function SimulationIntroduction() {
         </li>
       </ol>
 
+      {/* Why is this useful? */}
       <h2 className="text-2xl font-semibold">Why is this useful?</h2>
 
       <p>
@@ -72,6 +75,7 @@ export default function SimulationIntroduction() {
         before you spend money.
       </p>
 
+      {/* Explanation of Inputs */}
       <h2 className="text-2xl font-semibold">Explanation of Inputs</h2>
 
       <p>
@@ -135,6 +139,48 @@ export default function SimulationIntroduction() {
         <code>worstLikelyDemand &lt; expectedDemand &lt; bestLikelyDemand</code>
         , and <code>demandStandardDeviation</code> must be positive.
       </p>
+
+      {/* Explanation of Outputs */}
+      <h2 className="text-2xl font-semibold">Explanation of Outputs</h2>
+
+      <div className="flex flex-col gap-4">
+        <p>
+          After running the Monte Carlo production simulation, the API returns
+          key metrics that help you understand the profitability and risk of
+          your production decision under uncertain demand:
+        </p>
+        <ul>
+          <li>
+            <strong>expectedProfit</strong>: The average profit across 1,000
+            simulated demand scenarios. This represents the expected return of
+            your production plan.
+          </li>
+          <li>
+            <strong>volatility</strong>: The standard deviation of the simulated
+            profits, measuring the risk or variability in profit outcomes.
+          </li>
+          <li>
+            <strong>sharpeRatio</strong>: The ratio of expected profit to
+            volatility, indicating the risk-adjusted profitability of the
+            production decision. A higher Sharpe ratio means better return per
+            unit of risk.
+          </li>
+          <li>
+            <strong>worstLikelyCase</strong>: The 5th percentile profit, showing
+            a pessimistic scenario where only 5% of outcomes are worse. Useful
+            for risk assessment.
+          </li>
+          <li>
+            <strong>bestLikelyCase</strong>: The 95th percentile profit, showing
+            an optimistic scenario where 95% of outcomes are worse. Helps gauge
+            potential upside.
+          </li>
+        </ul>
+        <p>
+          These outputs allow you to make informed production planning decisions
+          by balancing expected profit against the uncertainty of demand.
+        </p>
+      </div>
     </section>
   );
 }
