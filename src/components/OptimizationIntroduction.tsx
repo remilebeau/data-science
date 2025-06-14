@@ -1,7 +1,7 @@
 export default function OptimizationIntroduction() {
   return (
     <section className="mx-auto max-w-3xl space-y-8 px-4 py-6">
-      <h2 className="text-primary-foreground text-2xl font-semibold">
+      <h2 className="text-2xl font-semibold">
         How to Use the Staffing Optimizer
       </h2>
 
@@ -17,9 +17,7 @@ export default function OptimizationIntroduction() {
         </p>
       </div>
 
-      <h2 className="text-primary-foreground text-2xl font-semibold">
-        What You Need to Enter
-      </h2>
+      <h2 className="text-2xl font-semibold">What You Need to Enter</h2>
 
       <p>For each day of the week, enter the number of workers you need:</p>
 
@@ -52,7 +50,7 @@ export default function OptimizationIntroduction() {
         staffing plan.
       </p>
 
-      <h2 className="text-primary-foreground text-2xl font-semibold">
+      <h2 className="text-2xl font-semibold">
         Understanding the Shift Variables (x1 to x7)
       </h2>
 
@@ -91,9 +89,7 @@ export default function OptimizationIntroduction() {
         these rotations to meet your demand with the fewest total people.
       </p>
 
-      <h2 className="text-primary-foreground text-2xl font-semibold">
-        What You'll Get Back
-      </h2>
+      <h2 className="text-2xl font-semibold">What You'll Get Back</h2>
 
       <p>The response will include:</p>
 

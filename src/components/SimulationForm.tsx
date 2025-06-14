@@ -115,7 +115,7 @@ export default function SimulationForm() {
             />
           ))}
 
-          <Button variant="secondary" type="submit" className="mt-8 w-full">
+          <Button type="submit" className="mt-8 w-full">
             Submit
           </Button>
         </form>

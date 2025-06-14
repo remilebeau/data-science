@@ -1,9 +1,7 @@
 export default function SimulationIntroduction() {
   return (
     <section className="mx-auto max-w-3xl space-y-8 px-4 py-6">
-      <h2 className="text-primary-foreground text-2xl font-semibold">
-        What is this simulation about?
-      </h2>
+      <h2 className="text-2xl font-semibold">What is this simulation about?</h2>
 
       <div className="space-y-4">
         <p>
@@ -24,9 +22,7 @@ export default function SimulationIntroduction() {
         </p>
       </div>
 
-      <h2 className="text-primary-foreground text-2xl font-semibold">
-        How does it work?
-      </h2>
+      <h2 className="text-2xl font-semibold">How does it work?</h2>
 
       <ol className="list-inside list-decimal space-y-4">
         <li>
@@ -67,9 +63,7 @@ export default function SimulationIntroduction() {
         </li>
       </ol>
 
-      <h2 className="text-primary-foreground text-2xl font-semibold">
-        Why is this useful?
-      </h2>
+      <h2 className="text-2xl font-semibold">Why is this useful?</h2>
 
       <p>
         Because demand is unpredictable, this simulation helps you make smarter
@@ -78,9 +72,7 @@ export default function SimulationIntroduction() {
         before you spend money.
       </p>
 
-      <h2 className="text-primary-foreground text-2xl font-semibold">
-        Explanation of Inputs
-      </h2>
+      <h2 className="text-2xl font-semibold">Explanation of Inputs</h2>
 
       <p>
         This Monte Carlo production simulation expects the following inputs:
