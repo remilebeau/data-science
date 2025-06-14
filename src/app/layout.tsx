@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Monte Carlo Simulation",
-  description: "Monte Carlo Simulation model by remilebeau",
+  title: "Simulation and Optimization | remilebeau",
+  description: "Simulation and Optimization models developed by remilebeau",
 };
 
 export default function RootLayout({

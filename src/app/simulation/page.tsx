@@ -1,5 +1,11 @@
 import SimulationIntroduction from "@/components/SimulationIntroduction";
 import SimulationForm from "@/components/SimulationForm";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Simulation | remilebeau",
+  description: "Simulation model developed by remilebeau",
+};
 
 export default function SimulationPage() {
   return (
