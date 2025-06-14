@@ -5,14 +5,14 @@ export default function SimulationIntroduction() {
         What is this simulation about?
       </h2>
 
-      <div className="flex flex-col gap-4">
-        <p className="text-base leading-relaxed">
+      <div className="space-y-4">
+        <p>
           Imagine you run a business that makes and sells a product. You want to
           figure out how many units to produce to make the most profit. But the
           problem is, you don&apos;t know exactly how many customers will want
           your product — demand can go up and down.
         </p>
-        <p className="text-base leading-relaxed">
+        <p>
           This simulation helps you explore what might happen when demand is
           uncertain. It uses a method called{" "}
           <strong className="text-primary font-semibold">
@@ -28,10 +28,10 @@ export default function SimulationIntroduction() {
         How does it work?
       </h2>
 
-      <ol className="flex list-inside list-decimal flex-col gap-4 text-base leading-relaxed">
+      <ol className="list-inside list-decimal space-y-4">
         <li>
           <strong className="font-semibold">You enter some numbers:</strong>
-          <ul className="text-muted-foreground mt-1 ml-5 list-inside list-disc space-y-1">
+          <ul className="text-muted-foreground ml-5 list-inside list-disc space-y-1">
             <li>How many products you plan to make.</li>
             <li>How much it costs to make each product.</li>
             <li>How much you can sell each product for.</li>
@@ -71,14 +71,78 @@ export default function SimulationIntroduction() {
         Why is this useful?
       </h2>
 
-      <div className="flex flex-col gap-4">
-        <p className="text-base leading-relaxed">
-          Because demand is unpredictable, this simulation helps you make
-          smarter decisions by showing the range of possible outcomes instead of
-          just one guess. It helps you see the risks and rewards of your
-          production plan before you spend money.
-        </p>
-      </div>
+      <p>
+        Because demand is unpredictable, this simulation helps you make smarter
+        decisions by showing the range of possible outcomes instead of just one
+        guess. It helps you see the risks and rewards of your production plan
+        before you spend money.
+      </p>
+
+      <h2 className="text-primary-foreground text-2xl font-semibold">
+        Explanation of Inputs
+      </h2>
+
+      <p>
+        This Monte Carlo production simulation expects the following inputs:
+      </p>
+      <ul className="text-muted-foreground ml-5 list-inside list-disc space-y-1">
+        <li>
+          <strong className="text-primary font-semibold">
+            productionQuantity
+          </strong>{" "}
+          (float): The number of units you plan to produce before knowing actual
+          demand.
+        </li>
+        <li>
+          <strong className="text-primary font-semibold">unitCost</strong>{" "}
+          (float): Cost to manufacture one unit.
+        </li>
+        <li>
+          <strong className="text-primary font-semibold">unitPrice</strong>{" "}
+          (float): Sale price for each unit sold.
+        </li>
+        <li>
+          <strong className="text-primary font-semibold">salvagePrice</strong>{" "}
+          (float): Value recovered per unsold unit, e.g., through discounting or
+          recycling.
+        </li>
+        <li>
+          <strong className="text-primary font-semibold">fixedCost</strong>{" "}
+          (float): Total fixed costs incurred regardless of production quantity
+          (e.g., rent, salaries).
+        </li>
+        <li>
+          <strong className="text-primary font-semibold">
+            worstLikelyDemand
+          </strong>{" "}
+          (float): Estimated 5th percentile demand — the lower bound for
+          realistic demand scenarios.
+        </li>
+        <li>
+          <strong className="text-primary font-semibold">expectedDemand</strong>{" "}
+          (float): The mean or expected average demand.
+        </li>
+        <li>
+          <strong className="text-primary font-semibold">
+            bestLikelyDemand
+          </strong>{" "}
+          (float): Estimated 95th percentile demand — the upper bound for
+          realistic demand scenarios.
+        </li>
+        <li>
+          <strong className="text-primary font-semibold">
+            demandStandardDeviation
+          </strong>{" "}
+          (float): The standard deviation of demand, representing demand
+          uncertainty and variability.
+        </li>
+      </ul>
+
+      <p className="italic">
+        Note: The input values must satisfy{" "}
+        <code>worstLikelyDemand &lt; expectedDemand &lt; bestLikelyDemand</code>
+        , and <code>demandStandardDeviation</code> must be positive.
+      </p>
     </section>
   );
 }
