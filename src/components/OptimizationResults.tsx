@@ -1,18 +1,134 @@
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
 type Props = {
   results: OptimizationOutput;
 };
 
 export default function OptimizationResults({ results }: Props) {
   return (
-    <section>
-      <h2 className="mb-4 text-2xl font-bold">Optimization Results</h2>
-      <p>X1: {results.x1}</p>
-      <p>X2: {results.x2}</p>
-      <p>X3: {results.x3}</p>
-      <p>X4: {results.x4}</p>
-      <p>X5: {results.x5}</p>
-      <p>X6: {results.x6}</p>
-      <p>X7: {results.x7}</p>
-    </section>
+    <>
+      {/* OPTIMIZATION RESULTS TABLE */}
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-1/2">Work Week</TableHead>
+            <TableHead className="w-1/2">Number of Staff</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {/* X1: Monday to Friday */}
+          <TableRow>
+            <TableCell>Monday to Friday</TableCell>
+            <TableCell>{results.x1}</TableCell>
+          </TableRow>
+          {/* X2: Tuesday to Saturday */}
+          <TableRow>
+            <TableCell>Tuesday to Saturday</TableCell>
+            <TableCell>{results.x2}</TableCell>
+          </TableRow>
+          {/* X3: Wednesday to Sunday */}
+          <TableRow>
+            <TableCell>Wednesday to Sunday</TableCell>
+            <TableCell>{results.x3}</TableCell>
+          </TableRow>
+          {/* X4: Thursday to Monday */}
+          <TableRow>
+            <TableCell>Thursday to Monday</TableCell>
+            <TableCell>{results.x4}</TableCell>
+          </TableRow>
+          {/* X5: Friday to Tuesday */}
+          <TableRow>
+            <TableCell>Friday to Tuesday</TableCell>
+            <TableCell>{results.x5}</TableCell>
+          </TableRow>
+          {/* X6: Saturday to Wednesday */}
+          <TableRow>
+            <TableCell>Saturday to Wednesday</TableCell>
+            <TableCell>{results.x6}</TableCell>
+          </TableRow>
+          {/* X7: Sunday to Thursday */}
+          <TableRow>
+            <TableCell>Sunday to Thursday</TableCell>
+            <TableCell>{results.x7}</TableCell>
+          </TableRow>
+          {/* Minimum Staff */}
+          <TableRow>
+            <TableCell className="font-bold">Minimum Staff</TableCell>
+            <TableCell className="font-bold">
+              {Math.round(results.minStaff)}
+            </TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+      {/* AVAILABLE, REQUIRED, and SLACK TABLE */}
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="w-1/4">Day</TableHead>
+            <TableHead className="w-1/4">Available</TableHead>
+            <TableHead className="w-1/4">Required</TableHead>
+            <TableHead className="text-right">Slack</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {/* Monday */}
+          <TableRow>
+            <TableCell>Monday</TableCell>
+            <TableCell>{results.monAva}</TableCell>
+            <TableCell>{results.monReq}</TableCell>
+            <TableCell className="text-right">{results.monSlack}</TableCell>
+          </TableRow>
+          {/* Tuesday */}
+          <TableRow>
+            <TableCell>Tuesday</TableCell>
+            <TableCell>{results.tueAva}</TableCell>
+            <TableCell>{results.tueReq}</TableCell>
+            <TableCell className="text-right">{results.tueSlack}</TableCell>
+          </TableRow>
+          {/* Wednesday */}
+          <TableRow>
+            <TableCell>Wednesday</TableCell>
+            <TableCell>{results.wedAva}</TableCell>
+            <TableCell>{results.wedReq}</TableCell>
+            <TableCell className="text-right">{results.wedSlack}</TableCell>
+          </TableRow>
+          {/* Thursday */}
+          <TableRow>
+            <TableCell>Thursday</TableCell>
+            <TableCell>{results.thuAva}</TableCell>
+            <TableCell>{results.thuReq}</TableCell>
+            <TableCell className="text-right">{results.thuSlack}</TableCell>
+          </TableRow>
+          {/* Friday */}
+          <TableRow>
+            <TableCell>Friday</TableCell>
+            <TableCell>{results.friAva}</TableCell>
+            <TableCell>{results.friReq}</TableCell>
+            <TableCell className="text-right">{results.friSlack}</TableCell>
+          </TableRow>
+          {/* Saturday */}
+          <TableRow>
+            <TableCell>Saturday</TableCell>
+            <TableCell>{results.satAva}</TableCell>
+            <TableCell>{results.satReq}</TableCell>
+            <TableCell className="text-right">{results.satSlack}</TableCell>
+          </TableRow>
+          {/* Sunday */}
+          <TableRow>
+            <TableCell>Sunday</TableCell>
+            <TableCell>{results.sunAva}</TableCell>
+            <TableCell>{results.sunReq}</TableCell>
+            <TableCell className="text-right">{results.sunSlack}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    </>
   );
 }
