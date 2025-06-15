@@ -11,6 +11,15 @@ type SimulationInput = {
 };
 
 type SimulationOutput = {
+  productionQuantity: number;
+  unitCost: number;
+  unitPrice: number;
+  salvagePrice: number;
+  fixedCost: number;
+  worstLikelyDemand: number;
+  expectedDemand: number;
+  bestLikelyDemand: number;
+  demandStandardDeviation: number;
   expectedProfit: number;
   volatility: number;
   sharpeRatio: number;

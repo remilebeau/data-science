@@ -124,9 +124,7 @@ export default function SimulationForm() {
         <p className="text-destructive mx-auto mt-8 text-center">{error}</p>
       )}
       {isLoading && <LoaderCircle className="mx-auto mt-8 animate-spin" />}
-      {simulationOutput && (
-        <SimulationResults simulationOutput={simulationOutput} />
-      )}
+      {simulationOutput && <SimulationResults results={simulationOutput} />}
     </>
   );
 }
