@@ -18,8 +18,8 @@ export default function OptimizationResults({ results }: Props) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-1/2">Work Week</TableHead>
-            <TableHead className="w-1/2">Number of Staff</TableHead>
+            <TableHead>Work Week</TableHead>
+            <TableHead>Number of Staff</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -71,10 +71,10 @@ export default function OptimizationResults({ results }: Props) {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead className="w-1/4">Day</TableHead>
-            <TableHead className="w-1/4">Available</TableHead>
-            <TableHead className="w-1/4">Required</TableHead>
-            <TableHead className="text-right">Slack</TableHead>
+            <TableHead>Day</TableHead>
+            <TableHead>Available</TableHead>
+            <TableHead>Required</TableHead>
+            <TableHead>Slack</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -83,49 +83,49 @@ export default function OptimizationResults({ results }: Props) {
             <TableCell>Monday</TableCell>
             <TableCell>{results.monAva}</TableCell>
             <TableCell>{results.monReq}</TableCell>
-            <TableCell className="text-right">{results.monSlack}</TableCell>
+            <TableCell>{results.monSlack}</TableCell>
           </TableRow>
           {/* Tuesday */}
           <TableRow>
             <TableCell>Tuesday</TableCell>
             <TableCell>{results.tueAva}</TableCell>
             <TableCell>{results.tueReq}</TableCell>
-            <TableCell className="text-right">{results.tueSlack}</TableCell>
+            <TableCell>{results.tueSlack}</TableCell>
           </TableRow>
           {/* Wednesday */}
           <TableRow>
             <TableCell>Wednesday</TableCell>
             <TableCell>{results.wedAva}</TableCell>
             <TableCell>{results.wedReq}</TableCell>
-            <TableCell className="text-right">{results.wedSlack}</TableCell>
+            <TableCell>{results.wedSlack}</TableCell>
           </TableRow>
           {/* Thursday */}
           <TableRow>
             <TableCell>Thursday</TableCell>
             <TableCell>{results.thuAva}</TableCell>
             <TableCell>{results.thuReq}</TableCell>
-            <TableCell className="text-right">{results.thuSlack}</TableCell>
+            <TableCell>{results.thuSlack}</TableCell>
           </TableRow>
           {/* Friday */}
           <TableRow>
             <TableCell>Friday</TableCell>
             <TableCell>{results.friAva}</TableCell>
             <TableCell>{results.friReq}</TableCell>
-            <TableCell className="text-right">{results.friSlack}</TableCell>
+            <TableCell>{results.friSlack}</TableCell>
           </TableRow>
           {/* Saturday */}
           <TableRow>
             <TableCell>Saturday</TableCell>
             <TableCell>{results.satAva}</TableCell>
             <TableCell>{results.satReq}</TableCell>
-            <TableCell className="text-right">{results.satSlack}</TableCell>
+            <TableCell>{results.satSlack}</TableCell>
           </TableRow>
           {/* Sunday */}
           <TableRow>
             <TableCell>Sunday</TableCell>
             <TableCell>{results.sunAva}</TableCell>
             <TableCell>{results.sunReq}</TableCell>
-            <TableCell className="text-right">{results.sunSlack}</TableCell>
+            <TableCell>{results.sunSlack}</TableCell>
           </TableRow>
         </TableBody>
       </Table>
