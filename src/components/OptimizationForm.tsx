@@ -52,6 +52,8 @@ export default function OptimizationForm() {
     setError(null);
     setIsLoading(true);
     setResults(null);
+    // add 5 second delay
+    await new Promise((resolve) => setTimeout(resolve, 5000));
     const results = await optimizeStaff(data);
     if (!results) {
       setError("Something went wrong, please try again");
@@ -77,7 +79,13 @@ export default function OptimizationForm() {
       {error && (
         <p className="text-destructive mx-auto mt-8 text-center">{error}</p>
       )}
-      {isLoading && <LoaderCircle className="mx-auto mt-8 animate-spin" />}
+      {isLoading && (
+        <section className="flex flex-col items-center gap-4">
+          <LoaderCircle className="mx-auto mt-8 animate-spin" />
+          <p>Loading...</p>
+          <p>The first request may take up to 60 seconds.</p>
+        </section>
+      )}
       {results && <OptimizationResults results={results} />}
       <Form {...form}>
         <form
