@@ -68,13 +68,13 @@ export default function OptimizationInstructions() {
         </TableHeader>
         <TableBody>
           {[
-            ["x1", "Mon–Fri"],
-            ["x2", "Tue–Sat"],
-            ["x3", "Wed–Sun"],
-            ["x4", "Thu–Mon"],
-            ["x5", "Fri–Tue"],
-            ["x6", "Sat–Wed"],
-            ["x7", "Sun–Thu"],
+            ["x1", "Mon-Fri"],
+            ["x2", "Tue-Sat"],
+            ["x3", "Wed-Sun"],
+            ["x4", "Thu-Mon"],
+            ["x5", "Fri-Tue"],
+            ["x6", "Sat-Wed"],
+            ["x7", "Sun-Thu"],
           ].map(([varName, shift]) => (
             <TableRow key={varName}>
               <TableCell>
@@ -90,7 +90,7 @@ export default function OptimizationInstructions() {
         demand with the fewest total employees.
       </p>
 
-      <h2 className="text-2xl font-semibold">What You’ll Get Back</h2>
+      <h2 className="text-2xl font-semibold">What You&apos;ll Get Back</h2>
       <p>The API response includes:</p>
       <Table>
         <TableHeader>
@@ -102,9 +102,9 @@ export default function OptimizationInstructions() {
         <TableBody>
           {[
             ["minStaff", "Minimum total workers"],
-            ["x1–x7", "Workers per shift"],
-            ["monAva–sunAva", "Daily worker availability"],
-            ["monSlack–sunSlack", "Daily excess workers"],
+            ["x1-x7", "Workers per shift"],
+            ["monAva-sunAva", "Daily worker availability"],
+            ["monSlack-sunSlack", "Daily excess workers"],
             ["totalSlack", "Total weekly excess"],
           ].map(([field, desc]) => (
             <TableRow key={field}>
