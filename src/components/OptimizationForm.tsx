@@ -90,7 +90,7 @@ export default function OptimizationForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="mx-auto flex w-1/2 flex-col gap-4"
+          className="grid grid-cols-2 gap-4"
         >
           {fields.map((field) => (
             <FormField
@@ -111,7 +111,7 @@ export default function OptimizationForm() {
             />
           ))}
 
-          <Button type="submit" className="mt-8 w-full">
+          <Button type="submit" className="col-span-full mt-8 w-full">
             Submit
           </Button>
         </form>
