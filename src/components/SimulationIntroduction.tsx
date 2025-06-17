@@ -149,7 +149,7 @@ export default function SimulationIntroduction() {
           key metrics that help you understand the profitability and risk of
           your production decision under uncertain demand:
         </p>
-        <ul>
+        <ul className="flex flex-col gap-4">
           <li>
             <strong>expectedProfit</strong>: The average profit across 1,000
             simulated demand scenarios. This represents the expected return of
