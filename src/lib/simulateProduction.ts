@@ -5,7 +5,7 @@ const DATA_URL =
 
 export default async function simulateProduction(
   formData: SimulationInput,
-): Promise<SimulationOutput> {
+): Promise<SimulationOutput | null> {
   const res = await fetch(DATA_URL, {
     method: "POST",
     headers: {
@@ -14,7 +14,7 @@ export default async function simulateProduction(
     body: JSON.stringify(formData),
   });
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    return null;
   }
   const data = await res.json();
   return data;
