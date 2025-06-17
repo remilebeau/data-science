@@ -74,6 +74,11 @@ export default function OptimizationForm() {
 
   return (
     <>
+      {error && (
+        <p className="text-destructive mx-auto mt-8 text-center">{error}</p>
+      )}
+      {isLoading && <LoaderCircle className="mx-auto mt-8 animate-spin" />}
+      {results && <OptimizationResults results={results} />}
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -103,12 +108,6 @@ export default function OptimizationForm() {
           </Button>
         </form>
       </Form>
-
-      {error && (
-        <p className="text-destructive mx-auto mt-8 text-center">{error}</p>
-      )}
-      {isLoading && <LoaderCircle className="mx-auto mt-8 animate-spin" />}
-      {results && <OptimizationResults results={results} />}
     </>
   );
 }
