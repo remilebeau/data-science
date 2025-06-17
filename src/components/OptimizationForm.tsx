@@ -52,8 +52,6 @@ export default function OptimizationForm() {
     setError(null);
     setIsLoading(true);
     setResults(null);
-    // add 5 second delay
-    await new Promise((resolve) => setTimeout(resolve, 5000));
     const results = await optimizeStaff(data);
     if (!results) {
       setError("Something went wrong, please try again");
