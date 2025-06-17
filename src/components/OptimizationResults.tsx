@@ -127,6 +127,13 @@ export default function OptimizationResults({ results }: Props) {
             <TableCell>{results.sunReq}</TableCell>
             <TableCell>{results.sunSlack}</TableCell>
           </TableRow>
+          {/* Total Slack */}
+          <TableRow>
+            <TableCell className="font-bold">Total Slack</TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
+            <TableCell className="font-bold">{results.totalSlack}</TableCell>
+          </TableRow>
         </TableBody>
       </Table>
     </>
