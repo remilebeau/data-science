@@ -91,6 +91,17 @@ export default function SimulationForm() {
 
   return (
     <>
+      {error && (
+        <p className="text-destructive mx-auto mt-8 text-center">{error}</p>
+      )}
+      {isLoading && (
+        <section className="flex flex-col items-center gap-4">
+          <LoaderCircle className="mx-auto mt-8 animate-spin" />
+          <p>Loading...</p>
+          <p>The first request may take up to 60 seconds.</p>
+        </section>
+      )}
+      {simulationOutput && <SimulationResults results={simulationOutput} />}
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -120,11 +131,6 @@ export default function SimulationForm() {
           </Button>
         </form>
       </Form>
-      {error && (
-        <p className="text-destructive mx-auto mt-8 text-center">{error}</p>
-      )}
-      {isLoading && <LoaderCircle className="mx-auto mt-8 animate-spin" />}
-      {simulationOutput && <SimulationResults results={simulationOutput} />}
     </>
   );
 }
