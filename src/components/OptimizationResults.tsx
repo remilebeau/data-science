@@ -13,7 +13,7 @@ type Props = {
 
 export default function OptimizationResults({ results }: Props) {
   return (
-    <>
+    <section className="mx-auto max-w-4xl space-y-8">
       {/* OPTIMIZATION RESULTS TABLE */}
       <Table>
         <TableHeader>
@@ -136,6 +136,6 @@ export default function OptimizationResults({ results }: Props) {
           </TableRow>
         </TableBody>
       </Table>
-    </>
+    </section>
   );
 }
