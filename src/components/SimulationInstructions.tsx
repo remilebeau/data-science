@@ -1,15 +1,68 @@
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-
 export default function SimulationInstructions() {
+  const inputs = [
+    {
+      name: "productionQuantity",
+      description: "Number of units you plan to produce",
+    },
+    {
+      name: "unitCost",
+      description: "Cost to manufacture one unit",
+    },
+    {
+      name: "unitPrice",
+      description: "Selling price per unit",
+    },
+    {
+      name: "salvagePrice",
+      description: "Recovered value per unsold unit",
+    },
+    {
+      name: "fixedCost",
+      description: "Fixed costs (e.g., rent, salaries)",
+    },
+    {
+      name: "worstLikelyDemand",
+      description: "The minimum likely demand",
+    },
+    {
+      name: "expectedDemand",
+      description: "Average or expected demand",
+    },
+    {
+      name: "bestLikelyDemand",
+      description: "The maximum likely demand",
+    },
+    {
+      name: "demandStandardDeviation",
+      description: "Standard deviation of demand, often a % of expected demand",
+    },
+  ];
+
+  const outputs = [
+    {
+      name: "expectedProfit",
+      description: "Average profit across 1,000 simulations",
+    },
+    {
+      name: "volatility",
+      description: "Standard deviation of profit (risk level)",
+    },
+    {
+      name: "sharpeRatio",
+      description: "The ratio of expected return to risk. Higher is better.",
+    },
+    {
+      name: "worstLikelyCase",
+      description: "5th percentile profit (pessimistic scenario)",
+    },
+    {
+      name: "bestLikelyCase",
+      description: "95th percentile profit (optimistic scenario)",
+    },
+  ];
+
   return (
-    <section className="mx-auto max-w-3xl space-y-8 px-4 py-6">
+    <section className="mx-auto max-w-4xl space-y-8">
       {/* Intro */}
       <h2 className="text-2xl font-semibold">Production Planning Simulation</h2>
       <div className="space-y-4">
@@ -30,69 +83,53 @@ export default function SimulationInstructions() {
 
       {/* Inputs Table */}
       <h2 className="text-2xl font-semibold">Explanation of Inputs</h2>
-      <p>This simulation expects the following fields:</p>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Field</TableHead>
-            <TableHead>Description</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {[
-            ["productionQuantity", "Number of units you plan to produce"],
-            ["unitCost", "Cost to manufacture one unit"],
-            ["unitPrice", "Selling price per unit"],
-            ["salvagePrice", "Recovered value per unsold unit"],
-            ["fixedCost", "Fixed costs (e.g., rent, salaries)"],
-            ["worstLikelyDemand", "The minimum likely demand"],
-            ["expectedDemand", "Average or expected demand"],
-            ["bestLikelyDemand", "The maximum likely demand"],
-            [
-              "demandStandardDeviation",
-              "Standard deviation of demand, often a % of expected demand",
-            ],
-          ].map(([field, desc]) => (
-            <TableRow key={field}>
-              <TableCell>
-                <code className="text-primary font-semibold">{field}</code>
-              </TableCell>
-              <TableCell>{desc}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <p>This simulation expects the following inputs:</p>
+      <div className="overflow-auto">
+        <table className="border-border w-full border text-sm">
+          <thead className="bg-muted">
+            <tr>
+              <th className="border-b px-4 py-2 text-left">Input</th>
+              <th className="border-b px-4 py-2 text-left">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {inputs.map((input) => (
+              <tr key={input.name}>
+                <td className="border-b px-4 py-2">
+                  <code className="text-primary font-semibold">
+                    {input.name}
+                  </code>
+                </td>
+                <td className="border-b px-4 py-2">{input.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* Outputs Table */}
       <h2 className="text-2xl font-semibold">Explanation of Outputs</h2>
       <p>The API returns the following fields after simulation:</p>
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Field</TableHead>
-            <TableHead>Description</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {[
-            ["expectedProfit", "Average profit across 1,000 simulations"],
-            ["volatility", "Standard deviation of profit (risk level)"],
-            [
-              "sharpeRatio",
-              "The ratio of expected return to risk. Higher is better.",
-            ],
-            ["worstLikelyCase", "5th percentile profit (pessimistic scenario)"],
-            ["bestLikelyCase", "95th percentile profit (optimistic scenario)"],
-          ].map(([field, desc]) => (
-            <TableRow key={field}>
-              <TableCell>
-                <code className="font-semibold">{field}</code>
-              </TableCell>
-              <TableCell>{desc}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+      <div className="overflow-auto">
+        <table className="border-border w-full border text-sm">
+          <thead className="bg-muted">
+            <tr>
+              <th className="border-b px-4 py-2 text-left">Field</th>
+              <th className="border-b px-4 py-2 text-left">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {outputs.map((output) => (
+              <tr key={output.name}>
+                <td className="border-b px-4 py-2">
+                  <code className="font-semibold">{output.name}</code>
+                </td>
+                <td className="border-b px-4 py-2">{output.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </section>
   );
 }

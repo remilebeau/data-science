@@ -1,6 +1,6 @@
 export default function OptimizationInstructions() {
   return (
-    <section className="mx-auto max-w-3xl space-y-8 px-4 py-6">
+    <section className="mx-auto max-w-4xl space-y-8">
       <h2 className="text-2xl font-semibold">Staffing Optimization</h2>
       <div className="space-y-4">
         <p>

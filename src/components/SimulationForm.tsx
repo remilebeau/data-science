@@ -90,7 +90,7 @@ export default function SimulationForm() {
   ] as const;
 
   return (
-    <>
+    <section className="mx-auto max-w-4xl space-y-8">
       {error && (
         <p className="text-destructive mx-auto mt-8 text-center">{error}</p>
       )}
@@ -131,6 +131,6 @@ export default function SimulationForm() {
           </Button>
         </form>
       </Form>
-    </>
+    </section>
   );
 }

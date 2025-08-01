@@ -26,7 +26,7 @@ const numberFormat: Intl.NumberFormatOptions = {
 
 export default function SimulationResults({ results }: Props) {
   return (
-    <>
+    <section className="mx-auto max-w-4xl space-y-8">
       {/* SIMULATION RESULTS TABLE */}
       <Table className="mx-auto w-1/2">
         <TableHeader>
@@ -72,6 +72,6 @@ export default function SimulationResults({ results }: Props) {
           </TableRow>
         </TableBody>
       </Table>
-    </>
+    </section>
   );
 }
