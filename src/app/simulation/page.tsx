@@ -1,6 +1,7 @@
 import SimulationInstructions from "@/components/SimulationInstructions";
 import SimulationForm from "@/components/SimulationForm";
 import { Metadata } from "next";
+import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Simulation | remilebeau",
@@ -9,9 +10,11 @@ export const metadata: Metadata = {
 
 export default function SimulationPage() {
   return (
-    <main className="mx-auto mt-12 flex max-w-4xl flex-col gap-8 p-4">
+    <section className="flex flex-col gap-8">
+      <BackButton />
       <SimulationInstructions />
       <SimulationForm />
-    </main>
+      <BackButton />
+    </section>
   );
 }

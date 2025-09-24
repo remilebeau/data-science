@@ -1,6 +1,7 @@
 import OptimizationInstructions from "@/components/OptimizationInstructions";
 import OptimizationForm from "@/components/OptimizationForm";
 import { Metadata } from "next";
+import BackButton from "@/components/BackButton";
 
 export const metadata: Metadata = {
   title: "Optimization | remilebeau",
@@ -8,9 +9,11 @@ export const metadata: Metadata = {
 };
 export default function OptimizationPage() {
   return (
-    <main className="mx-auto mt-12 flex max-w-4xl flex-col gap-8 p-4">
+    <section className="flex flex-col gap-8">
+      <BackButton />
       <OptimizationInstructions />
       <OptimizationForm />
-    </main>
+      <BackButton />
+    </section>
   );
 }
