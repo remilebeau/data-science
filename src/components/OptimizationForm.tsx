@@ -3,6 +3,8 @@
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useState } from "react";
+import { LoaderCircle } from "lucide-react";
 
 import {
   Form,
@@ -12,14 +14,15 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { LoaderCircle } from "lucide-react";
-import { useState } from "react";
+
 import optimizeStaff from "@/lib/optimizeStaff";
 import OptimizationResults from "@/components/OptimizationResults";
 
+// -------------------------
+// Schema & Types
+// -------------------------
 const formSchema = z.object({
   monReq: z.coerce.number().min(0),
   tueReq: z.coerce.number().min(0),
@@ -30,8 +33,56 @@ const formSchema = z.object({
   sunReq: z.coerce.number().min(0),
 });
 
+type FormValues = z.infer<typeof formSchema>;
+
+// -------------------------
+// UI Helpers
+// -------------------------
+function LoadingState() {
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <LoaderCircle className="mx-auto mt-8 animate-spin" />
+      <p>Loading...</p>
+      <p>The first request may take up to 60 seconds.</p>
+    </div>
+  );
+}
+
+function ErrorMessage({ message }: { message: string }) {
+  return <p className="text-destructive mx-auto mt-8 text-center">{message}</p>;
+}
+
+function RequirementField({
+  control,
+  name,
+  label,
+}: {
+  control: any;
+  name: keyof FormValues;
+  label: string;
+}) {
+  return (
+    <FormField
+      control={control}
+      name={name}
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel>{label}</FormLabel>
+          <FormControl>
+            <Input type="number" step="1" min="0" {...field} />
+          </FormControl>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  );
+}
+
+// -------------------------
+// Main Component
+// -------------------------
 export default function OptimizationForm() {
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       monReq: 0,
@@ -48,66 +99,68 @@ export default function OptimizationForm() {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const onSubmit = async (data: z.infer<typeof formSchema>) => {
+  const onSubmit = async (data: FormValues) => {
     setError(null);
     setIsLoading(true);
     setResults(null);
-    const results = await optimizeStaff(data);
-    if (!results) {
+
+    const response = await optimizeStaff(data);
+
+    if (!response) {
       setError("Something went wrong, please try again");
-      setIsLoading(false);
-      return;
+    } else {
+      setResults(response);
     }
-    setResults(results);
+
     setIsLoading(false);
   };
 
-  const fields = [
-    "monReq",
-    "tueReq",
-    "wedReq",
-    "thuReq",
-    "friReq",
-    "satReq",
-    "sunReq",
-  ] as const;
-
   return (
     <section className="mx-auto max-w-4xl space-y-8">
-      {error && (
-        <p className="text-destructive mx-auto mt-8 text-center">{error}</p>
-      )}
-      {isLoading && (
-        <section className="flex flex-col items-center gap-4">
-          <LoaderCircle className="mx-auto mt-8 animate-spin" />
-          <p>Loading...</p>
-          <p>The first request may take up to 60 seconds.</p>
-        </section>
-      )}
+      {error && <ErrorMessage message={error} />}
+      {isLoading && <LoadingState />}
       {results && <OptimizationResults results={results} />}
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
           className="grid grid-cols-2 gap-4"
         >
-          {fields.map((field) => (
-            <FormField
-              key={field}
-              control={form.control}
-              name={field}
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="capitalize">
-                    {field.name.replace("Req", "").slice(0, 3)} Requirement
-                  </FormLabel>
-                  <FormControl>
-                    <Input type="number" step="1" min="0" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-          ))}
+          <RequirementField
+            control={form.control}
+            name="monReq"
+            label="Mon Requirement"
+          />
+          <RequirementField
+            control={form.control}
+            name="tueReq"
+            label="Tue Requirement"
+          />
+          <RequirementField
+            control={form.control}
+            name="wedReq"
+            label="Wed Requirement"
+          />
+          <RequirementField
+            control={form.control}
+            name="thuReq"
+            label="Thu Requirement"
+          />
+          <RequirementField
+            control={form.control}
+            name="friReq"
+            label="Fri Requirement"
+          />
+          <RequirementField
+            control={form.control}
+            name="satReq"
+            label="Sat Requirement"
+          />
+          <RequirementField
+            control={form.control}
+            name="sunReq"
+            label="Sun Requirement"
+          />
 
           <Button type="submit" className="col-span-full mt-8 w-full">
             Submit
